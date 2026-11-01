@@ -1,4 +1,5 @@
 using Unity.Netcode;
+using Unity.Netcode.Transports.UTP;
 using UnityEngine;
 
 namespace HelloWorld
@@ -15,9 +16,12 @@ namespace HelloWorld
         {
             m_NetworkManager = GetComponent<NetworkManager>();
         }
-        /*///  keep this for server
+        //*///  keep this for server
         private void Start()
         {
+            var transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
+            transport.SetConnectionData("0.0.0.0", 7777);
+
             m_NetworkManager.StartServer();
         }
         //*///

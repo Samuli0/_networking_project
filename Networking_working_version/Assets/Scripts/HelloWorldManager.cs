@@ -53,9 +53,12 @@ namespace HelloWorld
 
             if (GUILayout.Button("Host")) m_NetworkManager.StartHost();
 
-            if (GUILayout.Button("Client")) ConnectToServer("135.225.131.185");
-                
+            if (GUILayout.Button("Client"))
+            {
+                ConnectToServer("135.225.131.185");
                 m_NetworkManager.StartClient();
+            }
+                
 
 
             if (GUILayout.Button("Server")) m_NetworkManager.StartServer();

@@ -1,4 +1,5 @@
 using Unity.Netcode;
+using Unity.Netcode.Transports.UTP;
 using UnityEngine;
 
 namespace HelloWorld
@@ -11,6 +12,7 @@ namespace HelloWorld
     {
         private NetworkManager m_NetworkManager;
 
+
         private void Awake()
         {
             m_NetworkManager = GetComponent<NetworkManager>();
@@ -21,6 +23,13 @@ namespace HelloWorld
             m_NetworkManager.StartServer();
         }
         //*///
+
+        public void ConnectToServer(string ipAddress)
+        {
+            var transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
+            transport.SetConnectionData(ipAddress, 7777);
+        }
+
         private void OnGUI()
         {
             GUILayout.BeginArea(new Rect(10, 10, 300, 300));
@@ -40,8 +49,15 @@ namespace HelloWorld
 
         private void StartButtons()
         {
+            
+
             if (GUILayout.Button("Host")) m_NetworkManager.StartHost();
-            if (GUILayout.Button("Client")) m_NetworkManager.StartClient();
+
+            if (GUILayout.Button("Client")) ConnectToServer("135.225.131.185");
+                
+                m_NetworkManager.StartClient();
+
+
             if (GUILayout.Button("Server")) m_NetworkManager.StartServer();
         }
 

@@ -27,10 +27,13 @@ namespace HelloWorld
         {
             if (!spawn)
             {
-                var randomPosition = GetRandomPositionOnPlane();
-                transform.position = randomPosition;
-                Position.Value = randomPosition;
-                spawn = true;
+                
+
+                    var randomPosition = GetRandomPositionOnPlane();
+                    transform.position = randomPosition;
+                    Position.Value = randomPosition;
+                    spawn = true;
+                
             }
             else 
             { 
@@ -46,7 +49,11 @@ namespace HelloWorld
 
         private void Update()
         {
-            transform.position = Position.Value;
+            if (IsClient)
+            {
+                transform.position = Position.Value;
+            }
+            
         }
     }
 }

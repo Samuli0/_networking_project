@@ -1,3 +1,4 @@
+using HelloWorld;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -38,10 +39,11 @@ public class Player_Controller : MonoBehaviour
     public NetworkVariable<Vector3> Position = new NetworkVariable<Vector3>();
     private bool spawn = false;
 
-    private void HandleInput()
+    public void HandleInput()
     {
 
         //_last = null;// no error every update with this here.
+       
 
         if (Keyboard.current.wKey.isPressed) // W
         {
@@ -142,7 +144,6 @@ public class Player_Controller : MonoBehaviour
 
 
 
-
         _rb = GetComponent<Rigidbody>();
 
         _commandW = new MoveForwardCommand(transform, MoveDistance); // W
@@ -156,6 +157,7 @@ public class Player_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleInput(); //handle input && move player
+        if (this) HandleInput(); //handle input && move player // may or may not work
+
     }
 }

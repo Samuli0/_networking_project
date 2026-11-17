@@ -58,8 +58,10 @@ namespace HelloWorld
 
             if (GUILayout.Button("Client"))
             {
-                ConnectToServer("172.20.88.68");
+                /*///
+                ConnectToServer("");
                 m_NetworkManager.StartClient();
+                //*///
             }
                 
 

@@ -4,7 +4,7 @@ using UnityEngine;
 public class Camera : MonoBehaviour
 {
     public int cameraID;
-    public Player_Controller controller;
+    public //Player_Controller controller;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

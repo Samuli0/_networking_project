@@ -41,7 +41,7 @@ namespace HelloWorld
             {
                 StatusLabels();
 
-                SubmitNewPosition();
+                //SubmitNewPosition();
             }
 
             GUILayout.EndArea();
@@ -73,7 +73,7 @@ namespace HelloWorld
                 m_NetworkManager.NetworkConfig.NetworkTransport.GetType().Name);
             GUILayout.Label("Mode: " + mode);
         }
-
+        /*///
         private void SubmitNewPosition()
         {
             if (GUILayout.Button(m_NetworkManager.IsServer ? "Move" : "Request Position Change"))
@@ -91,5 +91,6 @@ namespace HelloWorld
                 }
             }
         }
+        //*///
     }
 }

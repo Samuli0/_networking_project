@@ -17,9 +17,12 @@ namespace HelloWorld
         {
             m_NetworkManager = GetComponent<NetworkManager>();
         }
-        /*///  keep this for server
+        //*///  keep this for server
         private void Start()
         {
+            var transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
+            transport.SetConnectionData("0.0.0.0", 7777);
+
             m_NetworkManager.StartServer();
         }
         //*///
@@ -55,7 +58,7 @@ namespace HelloWorld
 
             if (GUILayout.Button("Client"))
             {
-                ConnectToServer("135.225.131.185");
+                ConnectToServer("172.20.88.68");
                 m_NetworkManager.StartClient();
             }
                 

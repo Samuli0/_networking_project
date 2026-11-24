@@ -2,13 +2,14 @@ using HelloWorld;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
-public class Player_Controller : MonoBehaviour
+public class Player_Controller :  NetworkBehaviour
 {
     [Range(0.01f, 0.1f)]
     public float MoveDistance = 1.0f;
@@ -43,7 +44,8 @@ public class Player_Controller : MonoBehaviour
     {
 
         //_last = null;// no error every update with this here.
-       
+        if (!IsOwner)
+            return;
 
         if (Keyboard.current.wKey.isPressed) // W
         {
@@ -133,7 +135,10 @@ public class Player_Controller : MonoBehaviour
         return new Vector3(UnityEngine.Random.Range(-3f, 3f), 1f, UnityEngine.Random.Range(-3f, 3f));
     }
 
-
+    private void Awake()
+    {
+        _rb = GetComponent<Rigidbody>();
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
